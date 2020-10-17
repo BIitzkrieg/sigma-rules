@@ -6,7 +6,7 @@ description: |
 rank: High
 tags: 
     - attack.T1105
-author: "Andrew Danis <andrew.danis@nih.gov>"
+author: "Andrew Danis"
 references: 
     - "https://lolbas-project.github.io/lolbas/Binaries/Certreq/#download "
 logsource:
