@@ -1,0 +1,19 @@
+title: File Execution via Bash.exe
+description: |
+    Bash can be used to execute files by proxy for defense evasion. A windows system would need the linux subsystem, git for windows, or another cygwin like utility in order to execute bash. False positives may be prevalent if this is the case.
+    
+
+rank: Low
+tags: 
+    - attack.T1218
+author: "Andrew Danis"
+references: 
+    - "https://lolbas-project.github.io/lolbas/Binaries/Bash/"
+logsource:
+    category: process_creation
+detection: 
+    condition: Section_1
+    Section_1:
+        Image: bash.exe
+        CommandLine|contains: '-c'
+    
