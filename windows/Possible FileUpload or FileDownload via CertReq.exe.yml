@@ -1,20 +1,21 @@
-author: Andrew Danis
-description: 'certreq is a LOLBIN capable of file upload or download to or from a
-  remote host.
-
-  '
-detection:
-  Section_1:
-    CommandLine|contains:
-    - -post
-    - -config
-    Image: certreq.exe
-  condition: Section_1
-logsource:
-  category: process_creation
-rank: High
-references:
-- 'https://lolbas-project.github.io/lolbas/Binaries/Certreq/#download '
-tags:
-- attack.T1105
 title: Possible FileUpload or FileDownload via CertReq.exe
+description: |
+    certreq is a LOLBIN capable of file upload or download to or from a remote host.
+    
+
+rank: High
+tags: 
+    - attack.T1105
+author: "Andrew Danis <andrew.danis@nih.gov>"
+references: 
+    - "https://lolbas-project.github.io/lolbas/Binaries/Certreq/#download "
+logsource:
+    category: process_creation
+detection: 
+    condition: Section_1
+    Section_1:
+        CommandLine|contains:
+            - '-post'
+            - '-config'
+        Image: certreq.exe
+    
