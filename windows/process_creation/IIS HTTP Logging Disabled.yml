@@ -1,4 +1,4 @@
-author: Andrew Danis <andrew.danis@nih.gov>
+author: Andrew Danis
 description: Identifies when Internet Information Services (IIS) HTTP Logging is disabled on a server. An attacker with IIS server access via a webshell or other mechanisms can disable HTTP Logging as an effective anti-forensics measure.
   
 detection:
