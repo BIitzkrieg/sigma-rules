@@ -1,4 +1,4 @@
-author: Andrew Danis <andrew.danis@nih.gov>
+author: Andrew Danis
 description: This detects possible file execution with elevated privileges by bypassing User Account Control via the sdclt binary typically used for windows backup and restore mechanisms.
 detection:
   Section_1:
