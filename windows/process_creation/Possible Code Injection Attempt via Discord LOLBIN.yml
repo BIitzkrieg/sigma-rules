@@ -1,0 +1,14 @@
+author: Andrew Danis
+description: "This rule looks for possible code injection via a legitimate Discord binary, discordhookhelper64.exe."
+detection:
+  Section_1:
+    CommandLine|contains: discordhookhelper64.exe inject
+  condition: Section_1
+logsource:
+  category: process_creation
+rank: High
+references:
+- https://twitter.com/Blackmond_/status/1317035680682397701
+tags:
+- attack.T1055
+title: Possible Code Injection Attempt via Discord LOLBIN
