@@ -1,0 +1,16 @@
+author: Andrew Danis
+description: winapiexec is a binary that lets you run Windows API''s and shellcode from a command line or batch script. This has been seen used by Gamaredon group in the past.
+detection:
+  Section_1:
+    CommandLine: '*winapiexec*'
+    Image: '*winapiexec*'
+  condition: Section_1
+logsource:
+  category: process_creation
+rank: Highest
+references:
+- https://twitter.com/arekfurt/status/1276338766307885057
+- https://rammichael.com/winapiexec
+tags:
+- attack.T1106
+title: Suspicious Process Creation - winapiexec
