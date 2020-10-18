@@ -1,0 +1,20 @@
+author: Andrew Danis <andrew.danis@nih.gov>
+description: Identifies when Internet Information Services (IIS) HTTP Logging is disabled on a server. An attacker with IIS server access via a webshell or other mechanisms can disable HTTP Logging as an effective anti-forensics measure.
+  
+detection:
+  Section_1:
+    CommandLine: '*dontLog:"True"*'
+    Image: appcmd.exe
+  condition: Section_1 and not filter
+  filter:
+    ParentImage: '*\iissetup.exe'
+logsource:
+  category: process_creation
+rank: High
+references:
+- null
+- null
+- null
+tags:
+- attack.T1070
+title: IIS HTTP Logging Disabled
