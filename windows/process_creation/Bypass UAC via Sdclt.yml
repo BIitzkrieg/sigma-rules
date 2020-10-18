@@ -1,0 +1,15 @@
+author: Andrew Danis <andrew.danis@nih.gov>
+description: This detects possible file execution with elevated privileges by bypassing User Account Control via the sdclt binary typically used for windows backup and restore mechanisms.
+detection:
+  Section_1:
+    CommandLine: '*KickOffElev*'
+    Image: '*sdclt.exe*'
+  condition: Section_1
+logsource:
+  category: process_creation
+rank: High
+references:
+- https://enigma0x3.net/2017/03/17/fileless-uac-bypass-using-sdclt-exe/
+tags:
+- attack.T1088
+title: Bypass UAC via Sdclt
