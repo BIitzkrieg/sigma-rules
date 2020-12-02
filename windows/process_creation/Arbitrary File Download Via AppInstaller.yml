@@ -1,0 +1,14 @@
+author: Andrew Danis
+description: "This rule looks for file downloads via appinstaller. \n"
+detection:
+  Section_1:
+    CommandLine|contains: start ms-appinstaller://?source=
+  condition: Section_1
+logsource:
+  category: process_creation
+rank: Highest
+references:
+- https://twitter.com/notwhickey/status/1333900137232523264
+tags:
+- attack.T1105
+title: Arbitrary File Download Via AppInstaller
