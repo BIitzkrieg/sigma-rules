@@ -1,0 +1,24 @@
+title: Disabling of Windows Defender
+description: |
+    This analytic looks for registry key modifications that would indicate that windows defender was disabled on an endpoint.
+    
+
+rank: High
+tags: 
+    - attack.T1089
+author: "Andrew Danis"
+references: 
+    - "https://thedfirreport.com/2020/12/13/defender-control/"
+logsource:
+    category: registry_value_change
+detection: 
+    condition: Section_1
+    Section_1:
+        TargetObject:
+            - HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\DisableAntiSpyware
+            - HKLM\System\CurrentControlSet\Services\WinDefend\Start
+        EventType: SetValue
+        Details:
+            - DWORD (0x00000001)
+            - DWORD (0x00000003)
+    
