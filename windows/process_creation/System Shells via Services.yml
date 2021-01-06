@@ -1,8 +1,6 @@
 title: System Shells via Services
 description: |
     Windows services typically run as SYSTEM and can be used as a privilege escalation opportunity. Malware or penetration testers may run a shell as a service to gain SYSTEM permissions.
-    
-
 rank: Medium
 tags: 
     - persistence
