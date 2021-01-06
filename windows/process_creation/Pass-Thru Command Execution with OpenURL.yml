@@ -1,8 +1,6 @@
 title: "Pass-Thru Command Execution with OpenURL"
 description: |
     This analytic looks for arbitrary command execution via the OpenURL method of rundll32. An attacker can pass crafted .hta and .url files to rundll32 to execute commands.
-    
-
 rank: High
 tags: 
     - attack.T1218
