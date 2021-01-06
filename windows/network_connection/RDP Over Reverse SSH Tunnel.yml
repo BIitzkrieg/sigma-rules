@@ -1,0 +1,21 @@
+title: "RDP Over Reverse SSH Tunnel"
+description: |
+    This Analytic detects svchost hosting RDP termsvcs communicating with the loopback address and on TCP port 3389. Taken from the PolyLogyX detection repo and modified for universal use.
+rank: Unknown
+tags: 
+    - attack.defense_evasion
+    - attack.command_and_control
+    - attack.t1076
+author: "Andrew Danis"
+references: 
+    - "https://github.com/polylogyx/DetectionRules/blob/master/general/rdp_reverse_tunnel.yml"
+logsource:
+    category: network_connection
+detection: 
+    condition: Section_1
+    Section_1:
+        Image|contains: svchost.exe
+        SourcePort: '3389'
+        DestinationIp:
+            - 127.*
+            - '::1'
