@@ -1,0 +1,18 @@
+title: "QuarksPwDump Dump File"
+description: |
+    Tihs Analytic detects a dump file written by QuarksPwDump password dumper. Taken from the PolyLogyX detection repo and modified for universal use.
+rank: High
+tags: 
+    - attack.credential_access
+    - attack.t1003
+author: "Andrew Danis"
+references: 
+    - "https://jpcertcc.github.io/ToolAnalysisResultSheet/details/QuarksPWDump.htm"
+    - "https://github.com/polylogyx/DetectionRules/blob/master/general/quarkspw_filedump.yml"
+logsource:
+    category: file_creation
+detection: 
+    condition: selection
+    selection:
+        TargetFilename: '*\AppData\Local\Temp\SAM-*.dmp*'
+    
