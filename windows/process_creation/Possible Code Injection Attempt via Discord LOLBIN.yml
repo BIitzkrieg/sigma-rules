@@ -4,7 +4,7 @@ description: |
 rank: High
 tags: 
     - attack.T1055
-author: "Andrew Danis <andrew.danis@nih.gov>"
+author: "Andrew Danis"
 references: 
     - "https://twitter.com/Blackmond_/status/1317035680682397701"
 logsource:
