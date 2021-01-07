@@ -16,4 +16,3 @@ detection:
             - '*\services\TermService\Parameters\ServiceDll*'
             - '*\Control\Terminal Server\fSingleSessionPerUser*'
             - '*\Control\Terminal Server\fDenyTSConnections*'
-    RDP Sensitive Settings Changed
