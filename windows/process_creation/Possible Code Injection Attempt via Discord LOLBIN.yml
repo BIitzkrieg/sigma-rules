@@ -1,7 +1,9 @@
 title: Possible Code Injection Attempt via Discord LOLBIN
 description: |
-    This rule looks for possible code injection via a legitimate Discord binary, discordhookhelper64.exe.
-rank: High
+    This rule looks for possible code injection via a legitimate Discord binary, discordhookhelper64.exe. 
+    
+
+rank: Highest
 tags: 
     - attack.T1055
 author: "Andrew Danis"
@@ -14,4 +16,4 @@ detection:
     Section_1:
         CommandLine|contains: discordhookhelper64.exe inject
     filter:
-        ParentImage: '*discord.exe'
+        ParentImage|endswith: 'discord.exe'
