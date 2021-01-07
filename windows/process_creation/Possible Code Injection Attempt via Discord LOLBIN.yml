@@ -14,4 +14,4 @@ detection:
     Section_1:
         CommandLine|contains: discordhookhelper64.exe inject
     filter:
-        ParentImage: '*\discord.exe'
+        ParentImage: '*discord.exe'
