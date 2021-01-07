@@ -1,6 +1,6 @@
 title: "QuarksPwDump Dump File"
 description: |
-    Tihs Analytic detects a dump file written by QuarksPwDump password dumper. Taken from the PolyLogyX detection repo and modified for universal use.
+    This Analytic detects a dump file written by QuarksPwDump password dumper. Taken from the PolyLogyX detection repo and modified for universal use.
 rank: High
 tags: 
     - attack.credential_access
