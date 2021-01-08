@@ -18,3 +18,5 @@ detection:
         TargetObject|contains: \Word\Security\AccessVBOM
         Details: DWORD (0x00000001)
         EventType: SetValue
+        Image|contains: Office
+    
