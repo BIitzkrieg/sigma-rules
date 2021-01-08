@@ -1,7 +1,8 @@
-title: VB Object Model Bypass
+title: "VB Object Model Bypass"
 description: |
     This analytic detects the enabling of VB Object Models (VBOM) within Microsoft Office, which could be an indication an attacker is trying to execute a dynamic macro.
     
+
 rank: Highest
 tags: 
     - attack.T1112
@@ -15,3 +16,5 @@ detection:
     condition: Section_1
     Section_1:
         TargetObject|contains: \Word\Security\AccessVBOM
+        Details: DWORD (0x00000001)
+        EventType: SetValue
