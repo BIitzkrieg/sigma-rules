@@ -6,7 +6,7 @@ description: |
 rank: Highest
 tags: 
     - attack.T1106
-author: "Andrew Danis"
+author: "Andrew Danis <andrew.danis@nih.gov>"
 references: 
     - "https://twitter.com/arekfurt/status/1276338766307885057"
     - "https://rammichael.com/winapiexec"
@@ -17,4 +17,5 @@ detection:
     Section_1:
         CommandLine|contains: winapiexec
     Section_2:
-        Image: winapiexec
+        Image|contains: winapiexec
+    
