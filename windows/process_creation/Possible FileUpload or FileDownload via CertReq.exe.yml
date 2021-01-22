@@ -17,5 +17,5 @@ detection:
         CommandLine|contains:
             - '-post'
             - '-config'
-        Image: certreq.exe
+        Image|endswith: certreq.exe
     
