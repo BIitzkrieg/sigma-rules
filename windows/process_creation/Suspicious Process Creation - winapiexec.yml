@@ -6,7 +6,7 @@ description: |
 rank: Highest
 tags: 
     - attack.T1106
-author: "Andrew Danis <andrew.danis@nih.gov>"
+author: "Andrew Danis"
 references: 
     - "https://twitter.com/arekfurt/status/1276338766307885057"
     - "https://rammichael.com/winapiexec"
