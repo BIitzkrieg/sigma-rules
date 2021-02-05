@@ -1,0 +1,21 @@
+title: "Possible VB Object Model Bypass"
+description: |
+    This analytic detects the enabling of VB Object Models (VBOM) within Microsoft Office. This could be an indication an attacker is trying to execute a dynamic macro, as seen used by APT37. Possible FP's are valid macros, group policy changes, or a user manually changing office security settings.
+    
+
+rank: High
+tags: 
+    - attack.T1112
+author: Andrew Danis
+references: 
+    - "https://blog.malwarebytes.com/threat-analysis/2021/01/retrohunting-apt37-north-korean-apt-used-vba-self-decode-technique-to-inject-rokrat/"
+    - "https://www.virustotal.com/gui/file/3c59ad7c4426e8396369f084c35a2bd3f0caa3ba1d1a91794153507210a77c90/behavior/C2AE"
+logsource:
+    category: registry_value_change
+detection: 
+    condition: Section_1
+    Section_1:
+        TargetObject|endswith: \Word\Security\AccessVBOM
+        Details: DWORD (0x00000001)
+        EventType: SetValue
+        Image|contains: Office
