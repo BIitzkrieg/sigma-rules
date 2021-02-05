@@ -1,0 +1,24 @@
+title: "Possible Office Child Process Masquerading"
+description: |
+    This analytic looks for the known Microsoft Application Error Reporting binary, a child process of office applications, where the binary is not signed, or signed by another entity other than Microsoft.
+    
+
+rank: Unknown
+tags: 
+    - attack.T1036
+author: "Andrew Danis"
+references: 
+    - "https://twitter.com/SBousseaden/status/1357681737866883074"
+logsource:
+    category: image_load
+detection: 
+    condition: 'Section_1 OR Section_2 AND NOT Section_3 '
+    Section_1:
+        Image|endswith: \DW20.exe
+        Signed: 'False'
+    Section_2:
+        Image|endswith: \DW20.exe
+    Section_3:
+        Signature: Microsoft Corporation
+        Signed: 'True'
+    
