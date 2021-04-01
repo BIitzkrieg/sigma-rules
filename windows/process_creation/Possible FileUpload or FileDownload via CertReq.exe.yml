@@ -1,9 +1,9 @@
-title: Possible FileUpload or FileDownload via CertReq.exe
+title: "Possible FileUpload or FileDownload via CertReq.exe"
 description: |
-    certreq is a LOLBIN capable of file upload or download to or from a remote host.
+    This analytic looks for the use of certreq, a LOLBIN capable of file upload or download to or from a remote host.
     
 
-rank: High
+rank: Highest
 tags: 
     - attack.T1105
 author: "Andrew Danis"
@@ -14,8 +14,7 @@ logsource:
 detection: 
     condition: Section_1
     Section_1:
-        CommandLine|contains:
+        CommandLine|contains|all:
             - '-post'
             - '-config'
-        Image|endswith: certreq.exe
-    
+        Image|endswith: \certreq.exe
