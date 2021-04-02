@@ -1,0 +1,24 @@
+title: "DLL Execution via Excel.Application RegisterXLL() method"
+description: |
+    A DLL can be loaded and executed via Excel by initializing the Excel.Application COM object and passing a DLL to the RegisterXLL method.
+    
+
+rank: Highest
+tags: 
+    - attack.T1218
+author: "Andrew Danis"
+references: 
+    - "https://github.com/moohax/xllpoc"
+    - "https://gist.github.com/ryhanson/227229866af52e2d963cf941af135a52"
+logsource:
+    category: process_creation
+detection: 
+    condition: 'Section_1 OR Section_2 '
+    Section_1:
+        CommandLine|contains: RegisterXLL
+        Image|endswith:
+            - \powershell.exe
+            - \rundll32.exe
+    Section_2:
+        CommandLine|endswith: .xll
+        Image|endswith: \excel.exe
