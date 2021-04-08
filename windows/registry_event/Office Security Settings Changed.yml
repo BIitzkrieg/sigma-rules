@@ -1,6 +1,6 @@
 title: "Office Security Settings Changed"
 description: |
-    This analytic detects registry changes to Office macro settings. This could be an indication an attacker is trying to execute a dynamic macro, as seen used by APT37. Possible FP's are valid macros, group policy changes, or a user manually changing office security settings.
+    This analytic detects registry changes to Office macro settings. This could be an indication an attacker is trying to execute a dynamic macro, as seen used by APT37. Possible FP's are valid macros, group policy changes, or a user manually changing office security settings. Modified SIGMA rule from the main repo and included additional references.
     
 
 rank: Medium
