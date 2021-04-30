@@ -14,8 +14,8 @@ logsource:
 detection: 
     condition: Section_1
     Section_1:
-        ParentImage: '*services.exe'
-        Image:
-            - '*powershell.exe'
-            - '*cmd.exe'
+        ParentImage|endswith: \services.exe'
+        Image|endswith:
+            - '\powershell.exe'
+            - '\cmd.exe'
     
