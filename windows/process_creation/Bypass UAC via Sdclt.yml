@@ -3,7 +3,7 @@ description: This detects possible file execution with elevated privileges by by
 detection:
   Section_1:
     CommandLine: '*KickOffElev*'
-    Image: '*sdclt.exe*'
+    Image|endswith: \sdclt.exe
   condition: Section_1
 logsource:
   category: process_creation
