@@ -1,0 +1,20 @@
+author: Andrew Danis
+description: 'Suspicious WMIC usage seen in dridex samples.'
+detection:
+  Section_1:
+    CommandLine|contains|all:
+    - /format:"
+    - .xsl
+    Image|endswith:
+    - \wmic.exe
+    - \WMIC.exe
+  condition: Section_1
+logsource:
+  category: process_creation
+rank: null
+references:
+- https://app.any.run/tasks/37ab1571-0794-49bf-a4d8-02f0a4d73dde/#
+role_id: 00000000-0000-0000-0000-000000000001
+tags:
+- attack.T1047
+title: Suspicious xsl file execution via WMIC
