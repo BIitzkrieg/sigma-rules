@@ -11,7 +11,7 @@ detection:
   condition: Section_1
 logsource:
   category: process_creation
-rank: null
+rank: high
 references:
 - https://app.any.run/tasks/37ab1571-0794-49bf-a4d8-02f0a4d73dde/#
 role_id: 00000000-0000-0000-0000-000000000001
