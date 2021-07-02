@@ -1,20 +1,23 @@
-title: "Pass-Thru Command Execution with OpenURL"
-description: |
-    This analytic looks for arbitrary command execution via the OpenURL method of rundll32. An attacker can pass crafted .hta and .url files to rundll32 to execute commands.
-    
-
+title: Pass-Thru Command Execution with OpenURL
+description: >
+    This analytic looks for arbitrary command execution via the OpenURL method
+    of rundll32. An attacker can pass crafted .hta and .url files to rundll32 to
+    execute commands.
 rank: High
-tags: 
+tags:
     - attack.T1218
-author: "Andrew Danis"
-references: 
-    - "https://bohops.com/2018/03/17/abusing-exported-functions-and-exposed-dcom-interfaces-for-pass-thru-command-execution-and-lateral-movement/"
+author: Andrew Danis
+references:
+    - >-
+        https://bohops.com/2018/03/17/abusing-exported-functions-and-exposed-dcom-interfaces-for-pass-thru-command-execution-and-lateral-movement/
 logsource:
     category: process_creation
-detection: 
+detection:
     condition: Section_1
     Section_1:
         CommandLine|contains|all:
             - 'url.dll,'
             - openurl
-        Image|endswith: rundll32.exe
+        Image|endswith: \rundll32.exe
+role_id: 00000000-0000-0000-0000-000000000001
+analytic_language: sigma
