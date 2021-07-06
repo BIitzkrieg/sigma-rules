@@ -1,0 +1,23 @@
+title: Download from Discord CDN
+description: >
+    This analytic looks for file downloads from Discord's Content Delivery
+    Network. This tactic has been seen used by threat actors to deliver malware.
+    (This rule is best created around device network events, however it is
+    probable an actor passes the CDN URL via a process command line)
+rank: Highest
+tags:
+    - attack.T1105
+author: Andrew Danis
+references:
+    - >-
+        https://blog.malwarebytes.com/threat-analysis/2021/04/a-deep-dive-into-saint-bot-downloader/
+logsource:
+    category: process_creation
+detection:
+    condition: Section_1
+    Section_1:
+        CommandLine|contains|all:
+            - cdn.discordapp.com
+            - /attachments/
+role_id: 00000000-0000-0000-0000-000000000000
+analytic_language: sigma
