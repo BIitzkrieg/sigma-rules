@@ -1,8 +1,5 @@
 author: Andrew Danis
-description: 'This analytic detects an Office application spawning tracert.exe. Based
-  on Lokibot maldoc samples leveraging tracert.exe for DLL injection.
-
-  '
+description: 'This analytic detects an Office application spawning tracert.exe. Based on Lokibot maldoc samples leveraging tracert.exe for DLL injection.'
 detection:
   Section_1:
     Image|endswith: \tracert.exe
