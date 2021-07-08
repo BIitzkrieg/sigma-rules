@@ -1,0 +1,20 @@
+author: Andrew Danis
+description: 'This analytic detects an Office application spawning tracert.exe. Based
+  on Lokibot maldoc samples leveraging tracert.exe for DLL injection.
+
+  '
+detection:
+  Section_1:
+    Image|endswith: \tracert.exe
+    ParentImage|contains: \Microsoft Office\
+  condition: Section_1
+logsource:
+  category: process_creation
+rank: Highest
+references:
+- https://twitter.com/SBousseaden/status/1370706939588579332
+- https://app.any.run/tasks/43b6c05a-e0a8-4627-9f8d-ca66a950ed17/#
+role_id: 00000000-0000-0000-0000-000000000001
+tags:
+- attack.T1055
+title: Microsoft Office Application Spawning tracert.exe
