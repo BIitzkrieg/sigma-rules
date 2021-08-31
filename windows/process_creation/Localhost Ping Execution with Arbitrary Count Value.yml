@@ -1,0 +1,29 @@
+title: Localhost Ping Execution with Arbitrary Count Value
+description: >
+    This analytic looks for ping being executed with an arbitrary count value.
+    Actors may leverage this as a "sleep" function before preforming malicious
+    actions.
+rank: Low
+tags:
+    - attack.TA0005
+author: Andrew Danis
+references:
+    - >-
+        https://news.sophos.com/en-us/2021/07/04/independence-day-revil-uses-supply-chain-exploit-to-attack-hundreds-of-businesses/amp/
+    - 'https://twitter.com/JohnLaTwC/status/1420777696657690630'
+logsource:
+    category: process_creation
+detection:
+    condition: 'Section_1 AND Section_2 '
+    Section_1:
+        Image|endswith: \ping.exe
+        CommandLine|contains:
+            - '-n'
+            - '-c'
+    Section_2:
+        CommandLine|contains:
+            - 127.0.0.1
+            - '127.1'
+            - '127.257'
+            - '::1'
+analytic_language: sigma
