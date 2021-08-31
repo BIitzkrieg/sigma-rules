@@ -1,0 +1,21 @@
+title: JNLP File Execution
+description: >
+    This analytic looks for JNLP File Execution which can be leveraged as a
+    dropper/loader for second stage malware.
+rank: Low
+tags:
+    - attack.TA0002
+author: Andrew Danis
+references:
+    - >-
+        https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/trickbot-disguised-as-covid-19-map/
+logsource:
+    category: process_creation
+detection:
+    condition: Section_1
+    Section_1:
+        Image|endswith:
+            - \jp2launcher.exe
+            - \javaws.exe
+        CommandLine|contains: .jnlp
+analytic_language: sigma
