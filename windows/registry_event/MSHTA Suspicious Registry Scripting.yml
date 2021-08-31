@@ -1,1 +1,22 @@
-
+title: MSHTA Suspicious Registry Scripting
+description: >
+    This analytic looks for suspicious command line scripting arguments for
+    mshta.exe being written to the registry, usually for persistence purposes.
+rank: Highest
+tags:
+    - attack.T1170
+    - attack.T1059.003
+    - attack.T1059.005
+    - attack.T1218
+    - attack.T1059.007
+author: Andrew Danis
+logsource:
+    category: registry_event
+detection:
+    condition: Section_1
+    Section_1:
+        Details|contains:
+            - mshta
+            - wscript.shell
+        TargetObject: '*'
+analytic_language: sigma
