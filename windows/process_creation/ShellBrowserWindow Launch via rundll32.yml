@@ -1,0 +1,23 @@
+title: ShellBrowserWindow Launch via rundll32
+description: >
+    This analytic looks for the use of the .NET DCOM "ShellBrowserWindow" object
+    in Windows 10- Server 2012R2. This can be leveraged to run shell commands on
+    a host.
+rank: Medium
+tags:
+    - attack.T1085
+author: Andrew Danis
+references:
+    - 'https://enigma0x3.net/2017/01/23/lateral-movement-via-dcom-round-2/'
+    - 'https://twitter.com/SBousseaden/status/1424153056795668487'
+logsource:
+    category: process_creation
+detection:
+    condition: 'Section_1 AND Section_2 '
+    Section_1:
+        CommandLine|contains|all:
+            - SHCreateLocalServerRunDll
+            - c08afd90-f2a1-11d
+    Section_2:
+        Image|endswith: \rundll32.exe
+analytic_language: sigma
