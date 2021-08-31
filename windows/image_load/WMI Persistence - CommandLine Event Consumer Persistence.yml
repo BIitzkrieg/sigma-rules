@@ -1,0 +1,20 @@
+title: WMI Persistence - CommandLine Event Consumer Persistence
+description: >
+    This analytic looks for malicious WMI Event Subscription via CommandLine
+    Event Subscription instead of Script based Event Subscription.
+rank: High
+tags:
+    - attack.TA0003
+    - attack.T1084
+    - attack.T1059
+author: Andrew Danis
+references:
+    - 'https://www.eideon.com/2018-03-02-THL03-WMIBackdoors/'
+logsource:
+    category: image_load
+detection:
+    condition: Section_1
+    Section_1:
+        Image|endswith: \WmiPrvSE.exe
+        ImageLoaded|endswith: \wbemcons.dll
+analytic_language: sigma
