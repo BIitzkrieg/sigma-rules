@@ -1,0 +1,21 @@
+title: Microsoft Word Suspicious URI Set in Registry
+description: >
+    This analytic looks for a suspicious URI set in Office Registry Keys. This
+    could be indicative of CVE-2021-40444 exploitation.
+rank: High
+tags:
+    - attack.T1203
+author: Andrew Danis
+references:
+    - 'https://twitter.com/JRoosen/status/1435792495217201157'
+logsource:
+    category: registry_event
+detection:
+    condition: Section_1
+    Section_1:
+        Image|endswith: \\winword.exe
+        TargetObject|contains|all:
+            - 'http://'
+            - EnableBHO
+role_id: 00000000-0000-0000-0000-000000000000
+analytic_language: sigma
