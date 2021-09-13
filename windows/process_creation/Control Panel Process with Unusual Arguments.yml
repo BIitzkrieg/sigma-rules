@@ -1,0 +1,38 @@
+title: Control Panel Process with Unusual Arguments
+description: >
+    This analytic identifies unusual instances of Control Panel with suspicious
+    keywords or paths in the process command line value. Adversaries may abuse
+    Control.exe to proxy execution of malicious code.
+rank: Medium
+tags:
+    - attack.T1218.002
+    - attack.T1218
+    - attack.TA0005
+author: Andrew Danis
+references:
+    - >-
+        https://github.com/elastic/detection-rules/blob/main/rules/windows/defense_evasion_execution_control_panel_suspicious_args.toml
+logsource:
+    category: process_creation
+detection:
+    condition: Section_1
+    Section_1:
+        Image|endswith:
+            - \Windows\System32\control.exe
+            - \Windows\SysWOW64\control.exe
+        CommandLine|contains:
+            - .jpg
+            - .png
+            - .gif
+            - .bmp
+            - .jpeg
+            - .TIFF
+            - '.inf'
+            - .dat
+            - '*.cpl:*/*'
+            - '*../../..*'
+            - '*/AppData/Local/*'
+            - '*:\\Users\\Public\\*'
+            - '*\\AppData\\Local\\*'
+role_id: 00000000-0000-0000-0000-000000000000
+analytic_language: sigma
