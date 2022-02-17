@@ -1,0 +1,26 @@
+title: GetSystem in Meterpreter & Cobalt Strike Beacon
+description: |
+  This analytic detects Meterpreter and Cobalt Strike named pipe impersonation to achieve SYSTEM privileges.
+level: high
+status: stable
+tags:
+- attack.T1202
+author: Andrew Danis
+references:
+- https://redcanary.com/blog/getsystem-offsec/?utm_source=social&utm_medium=twitter&utm_campaign=blog
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  condition: Section_1 OR Section_2 
+  Section_1:
+    CommandLine|contains|all:
+    - echo
+    - \pipe\
+    Image|endswith: \cmd.exe
+    ParentImage|endswith: \services.exe
+  Section_2:
+    CommandLine|contains: ',a /p;'
+    Image|endswith: \rundll32.exe
+falsepositives:
+- Unknown
