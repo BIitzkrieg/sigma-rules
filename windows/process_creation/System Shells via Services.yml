@@ -1,21 +1,30 @@
 title: System Shells via Services
-description: |
-    Windows services typically run as SYSTEM and can be used as a privilege escalation opportunity. Malware or penetration testers may run a shell as a service to gain SYSTEM permissions.
-rank: Medium
-tags: 
+description: >
+    This analytic looks for the services binary spawning shells as a child
+    process. Windows services typically run as SYSTEM and can be used as a
+    privilege escalation opportunity. Malware or penetration testers may run a
+    shell as a service to gain SYSTEM permissions.
+level: medium
+status: stable
+tags:
     - persistence
-    - system shell
     - attack.T1050
 author: Andrew Danis
-references: 
-    - "https://github.com/elastic/detection-rules/blob/main/rules/windows/persistence_system_shells_via_services.toml"
+references:
+    - >-
+        https://github.com/elastic/detection-rules/blob/main/rules/windows/persistence_system_shells_via_services.toml
 logsource:
     category: process_creation
-detection: 
-    condition: Section_1
+detection:
+    condition: 'Section_1 AND NOT Section_2 '
     Section_1:
-        ParentImage|endswith: \services.exe'
         Image|endswith:
-            - '\powershell.exe'
-            - '\cmd.exe'
-    
+            - \powershell.exe
+            - \cmd.exe
+            - \pwsh.exe
+            - \powershell_ise.exe
+        ParentImage|endswith: \services.exe
+    Section_2:
+        CommandLine|contains: NVDisplay.ContainerLocalSystem
+falsepositives:
+- Legitimate services executing shell commands
