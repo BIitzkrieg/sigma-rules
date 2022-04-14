@@ -26,4 +26,4 @@ detection:
   Section_2:
     Details|contains: '-'
 falsepositives:
-- None
+- None observed, test in your environment
