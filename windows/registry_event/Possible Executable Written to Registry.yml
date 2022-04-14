@@ -1,0 +1,29 @@
+title: Possible Executable Written to Registry
+description: |
+  This analytic looks for potential binary files written to registry keys based on the Windows MZ header magic bytes. Seen in Gootloader Campaigns.
+level: medium
+status: stable
+tags:
+- attack.T1112
+author: Andrew Danis
+references:
+- https://news.sophos.com/en-us/2021/03/01/gootloader-expands-its-payload-delivery-options/
+logsource:
+  category: registry_event
+  product: windows
+detection:
+  condition: Section_1 AND NOT Section_2 
+  Section_1:
+    Details|startswith: 4d5a
+    TargetObject|startswith:
+    - HKU\
+    - HKEY_USERS\
+    Image|endswith:
+    - \wscript.exe
+    - \cscript.exe
+    - \cmd.exe
+    - \powershell.exe
+  Section_2:
+    Details|contains: '-'
+falsepositives:
+- None
