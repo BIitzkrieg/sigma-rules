@@ -1,0 +1,22 @@
+title: Suspicious Powershell Execution via WScript or CScript
+description: >
+    This analytic looks for suspicious powershell invoke expression usage
+    spawning from wscript and cscript, which is likely indicative of a malicious
+    JS loader being run. Seen in many campaigns to deliver secondary payloads.
+rank: High
+tags:
+    - attack.T1059.001
+    - attack.T1059.007
+author: Andrew Danis
+logsource:
+    category: process_creation
+detection:
+    condition: Section_1
+    Section_1:
+        ParentImage|endswith:
+            - \wscript.exe
+            - \cscript.exe
+        Image|endswith: \powershell.exe
+        CommandLine|contains: iex
+role_id: 00000000-0000-0000-0000-000000000000
+analytic_language: sigma
