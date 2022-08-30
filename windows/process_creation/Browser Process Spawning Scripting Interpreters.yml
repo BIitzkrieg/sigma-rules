@@ -1,0 +1,34 @@
+title: Browser Process Spawning Scripting Interpreters
+author: Andrew Danis
+description: 'This analytic detects a browser process spawning scripting interpreters
+  which could indicate a user downloading and executing a suspicious file. An analyst
+  should attempt to acquire the file referenced in the command line arguments of the
+  alert, and examine it to determine if it is malicious or not.'
+references:
+- None
+tags:
+- attack.t1170
+status: stable
+level: medium
+logsource:
+    product: windows
+    category: process_creation
+detection:
+  Section_1:
+    CommandLine|contains: '*'
+    Image|endswith:
+    - \mshta.exe
+    - \powershell.exe
+    - \wscript.exe
+    - \cscript.exe
+    ParentImage|endswith:
+    - \chrome.exe
+    - \msedge.exe
+    - \opera.exe
+    - \firefox.exe
+    - \iexplore.exe
+  Section_2:
+    CommandLine|contains: \WebPrintingService\CustomWPSProtocolHandler.vbs
+  condition: 'Section_1 AND NOT Section_2 '
+falsepositives:
+- Developers or users that commonly work with JS files
