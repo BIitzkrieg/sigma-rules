@@ -13,7 +13,7 @@ logsource:
 detection:
     condition: Section_1
     Section_1:
-        Image|endswith: \\winword.exe
+        Image|endswith: \winword.exe
         TargetObject|contains|all:
             - 'http://'
             - EnableBHO
