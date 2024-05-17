@@ -29,9 +29,9 @@ detection:
             - Set-MpPreference -EnableControlledFolderAccess Disabled
             - Set-MpPreference -PUAProtection disable
             - Set-MpPreference -DisableRealtimeMonitoring $true
-            - Set-MpPreference -DisableBehaviorMonitoring $tru
+            - Set-MpPreference -DisableBehaviorMonitoring $true
             - Set-MpPreference -DisableIOAVProtection $true
-            - Set-MpPreference -DisablePrivacyMode $tru
+            - Set-MpPreference -DisablePrivacyMode $true
             - Set-MpPreference -SignatureDisableUpdateOnStartupWithoutEngine $true
             - Set-MpPreference -DisableArchiveScanning $true
             - Set-MpPreference -DisableIntrusionPreventionSystem $true
